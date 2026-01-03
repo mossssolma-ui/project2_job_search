@@ -9,23 +9,20 @@ class AbstractApi(ABC):
 
     @abstractmethod
     def _connect(self, text: str) -> Response:
-        """Абстрактный метод для подключения к hh.ru"""
+        """Абстрактный метод для подключения к API"""
         ...
 
     @abstractmethod
     def get_vacancies(self, text: str) -> list[dict]:
-        """Абстрактный метод для получения вакансий с hh.ru"""
+        """Абстрактный метод для получения вакансий"""
         ...
 
 
-class HhApi(AbstractApi):
+class HeadHunterAPI(AbstractApi):
     """Класс для работы c hh.ru"""
 
     def __init__(self, page: int = 0):
         """Инициалиализация подключения"""
-        self._HhApi__params = None
-        self._HhApi__headers = None
-        self._HhApi__url = None
         self.__url = "https://api.hh.ru/vacancies"
         self.__headers = {"User-Agent": "HH-User-Agent"}
         self.__params = {"page": page, "per_page": 30}
@@ -39,5 +36,4 @@ class HhApi(AbstractApi):
 
     def get_vacancies(self, text: str) -> list[dict]:
         """Метод получения вакансий"""
-        vacancies = self._connect(text).json()["items"]
-        return vacancies  # type: ignore
+        return self._connect(text).json().get("items", [])  # type: ignore
