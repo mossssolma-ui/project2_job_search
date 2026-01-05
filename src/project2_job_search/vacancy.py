@@ -49,6 +49,16 @@ class Vacancy:
         """Вывод для отладки"""
         return f"name={self.name}, link={self.link}, salary_from={self.salary_from}, salary_to={self.salary_to}"
 
+    def to_dict(self) -> dict:
+        """Преобразует объект Vacancy в словарь для сохранения в JSON"""
+        return {
+            "name": self.name,
+            "link": self.link,
+            "description": self.description,
+            "salary_from": self.salary_from,
+            "salary_to": self.salary_to,
+        }
+
     @classmethod
     def cast_to_object_list(cls, vacancies: list) -> list[Vacancy]:
         """Преобразует данные из JSON в список объектов Vacancy"""

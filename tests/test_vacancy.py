@@ -62,6 +62,18 @@ def test_vacancy_repr(vacancies_init_full: Vacancy) -> None:
     assert "salary_to=150000" in out
 
 
+def test_to_dict(vacancies_init_full: Vacancy) -> None:
+    """Тест преобразования объекта Vacancy в словарь"""
+    assert Vacancy.to_dict(vacancies_init_full) == {
+        "name": "Python Dev",
+        "link": "https://hh.ru/vacancy/123",
+        "description": "Разработка на Python",
+        "salary_from": 100000,
+        "salary_to": 150000,
+    }
+    assert isinstance(Vacancy.to_dict(vacancies_init_full), dict)
+
+
 def test_cast_to_object_list(vacancies_list_dict: list[dict]) -> None:
     """Преобразования списка словарей в объекты Vacancy"""
     vac = Vacancy.cast_to_object_list(vacancies_list_dict)
