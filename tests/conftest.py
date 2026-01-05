@@ -74,3 +74,28 @@ def vacancies_list_dict() -> list[dict]:
         },
     ]
     return data
+
+
+@pytest.fixture
+def test_data() -> list[dict]:
+    """Тестовые вакансии"""
+    return [
+        {
+            "name": "Python Developer",
+            "link": "https://hh.ru/vacancy/123",
+            "description": "We need Python developer",
+            "salary": {"from": 100000, "to": 150000},
+        },
+        {
+            "name": "Java Developer",
+            "link": "https://hh.ru/vacancy/234",
+            "description": "Java position",
+            "salary": {"from": 90000, "to": 140000},
+        },
+        {
+            "name": "Python Data Scientist",
+            "link": "https://hh.ru/vacancy/345",
+            "description": "Python for data science",
+            "salary": {"from": 120000, "to": 180000},
+        },
+    ]
