@@ -99,3 +99,15 @@ def test_data() -> list[dict]:
             "salary": {"from": 120000, "to": 180000},
         },
     ]
+
+
+@pytest.fixture
+def sample_vacancies() -> list[Vacancy]:
+    """Фикстура с набором вакансий для тестов."""
+    return [
+        Vacancy("Python Developer", "https://hh.ru/vacancy/1", {"from": 100000, "to": 150000}, "Опыт Python"),
+        Vacancy("Java Developer", "https://hh.ru/vacancy/2", {"from": 120000}, "Опыт Java"),
+        Vacancy("Data Scientist", "https://hh.ru/vacancy/3", {"to": 200000}, "ML, Python"),
+        Vacancy("Frontend Dev", "https://hh.ru/vacancy/4", None, "React, TypeScript"),
+        Vacancy("Intern", "https://hh.ru/vacancy/5", {"from": 30000, "to": 50000}, "Стажировка, Python"),
+    ]

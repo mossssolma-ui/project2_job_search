@@ -51,12 +51,19 @@ class Vacancy:
 
     def to_dict(self) -> dict:
         """Преобразует объект Vacancy в словарь для сохранения в JSON"""
+        salary_dict = None
+        if self.salary_from or self.salary_to:
+            salary_dict = {}
+            if self.salary_from:
+                salary_dict["from"] = self.salary_from
+            if self.salary_to:
+                salary_dict["to"] = self.salary_to
+
         return {
             "name": self.name,
             "link": self.link,
             "description": self.description,
-            "salary_from": self.salary_from,
-            "salary_to": self.salary_to,
+            "salary": salary_dict,
         }
 
     @classmethod
