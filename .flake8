@@ -1,4 +1,10 @@
 [flake8]
 max-line-length = 119
 ignore = E203, W503
-exclude = .git, main.py, __pycache__
+exclude =
+    .git,
+    .venv,
+    venv,
+    env,
+    __pycache__,
+    *.pyc
